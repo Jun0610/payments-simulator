@@ -1,8 +1,11 @@
+const { log } = require('console');
 const express = require('express')
 const {Kafka} = require('kafkajs');
 const app = express();
-const expressWs = require('express-ws');
-const wsInstance = expressWs(app)
+const server = require('http').createServer(app);
+const WebSocket = require('ws')
+
+const wss = new WebSocket.Server({server : server, path : '/stats'})
 
 app.use(express.static("../webui/dist"))
 
@@ -38,27 +41,21 @@ const initUserConsumer = async() => {
   })
 }
 
-
-app.get('/', (req, res, next) => {
-  console.log('dsadsadasd')
-})
-
-app.ws('/stats', (ws, req) => {
+wss.on('connection', (ws) => {
   let statsInterval;
   let userInterval;
-
-
-  ws.on('connection', () => {
-    console.log('websocket established')
-    setInterval(() => {
-      ws.send('ping')
-    }, 5000)
-  })
+  console.log('websocket established')
+  setInterval(() => {
+    ws.send('ping')
+  }, 5000)
 
   ws.on('message', (msg) => {
     if (msg === 'start') {
       statsInterval = setInterval(() => {
-        ws.send(stats)
+        if (stats) {
+          ws.send(stats)
+        }
+        
       }, 1000)
 
       userInterval = setInterval(() => {
@@ -76,7 +73,7 @@ app.ws('/stats', (ws, req) => {
 const main = async() => {
   await initStatsConsumer();
   await initUserConsumer();
-  app.listen(9090);
+  server.listen(9090);
   console.log("server listening on port 9090...")
 }
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {Button, Flex} from 'antd'
 import './App.css'
-const webSocketUrl = 'ws://localhost:9090/stats'
+const webSocketUrl = 'ws://junshernlim.dev/payments-simulator/stats'
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { useEffect } from 'react';
 import TransactionGrid from './TransactionsGrid';
@@ -18,10 +18,11 @@ function App() {
   const [users, setUsers] = useState({});
 
   const {sendMessage, lastMessage, readyState} = useWebSocket(webSocketUrl);
+  
 
   useEffect(() => {
     if (lastMessage) {
-      if (lastMessage === 'ping') {
+      if (lastMessage.data === 'ping') {
         sendMessage('pong');
         return;
       }
