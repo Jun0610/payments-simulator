@@ -61,19 +61,30 @@ function App() {
 
   return (
     <>
-    <Button style={{marginBottom : 20}} onClick={handleClick}>
-      {simulatorState === STOP && "Start transaction simulator"}
-      {simulatorState === START && "Stop transaction simulator"}
-    </Button>
-    <div>
-      Currently processing {renderTransactionCount()} transactions per second
-    </div>
-    <Flex justify='space-between'>
-      <TransactionGrid mostRecentTransactions={mostRecentTransactions}/>
-      <UsersGrid users={users}/>
-    </Flex>
-    
+      <div style={{width : "70%" , margin : "0 auto", marginTop : 100}}>
+        <Button style={{marginBottom : 20}} onClick={handleClick}>
+          {simulatorState === STOP && "Start transaction simulator"}
+          {simulatorState === START && "Stop transaction simulator"}
+        </Button>
+        <div>
+          Currently processing {renderTransactionCount()} transactions per second
+        </div>
+        <Flex justify='space-between'>
+          <TransactionGrid mostRecentTransactions={mostRecentTransactions}/>
+          <UsersGrid users={users}/>
+        </Flex>
+      </div>
+      <div style={{height : 50, width: "100%", bottom : 0, position : "absolute"}}>
+        <span>
+        Made By: Jun Shern Lim | 
+        <a style={{paddingLeft : 5}} href="https://github.com/Jun0610/payments-simulator">
+          See the code here
+        </a>
+      </span>
+      </div>
+
     </>
+
   )
 }
  
