@@ -4,7 +4,7 @@ const app = express();
 const expressWs = require('express-ws');
 const wsInstance = expressWs(app)
 
-app.use(express.static("./public"))
+app.use(express.static("../webui/dist"))
 
 const kafka = new Kafka({
   clientId: 'transaction-webserver',
