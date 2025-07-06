@@ -24,7 +24,7 @@ const TransactionGrid = ({mostRecentTransactions}) => {
       return rows;
   }, [mostRecentTransactions])
 
-  return <div style={{height: 475, width : "45%", textAlign : "left", marginTop: 40}}>
+  return <div style={{height: 475, width : "45%", textAlign : "left"}}>
     <Flex>
       <h3 style={{margin : "auto", marginBottom : 10}}>10 most recent transactions</h3>
     </Flex>

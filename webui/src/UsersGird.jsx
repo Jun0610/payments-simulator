@@ -22,7 +22,7 @@ const UsersGrid = ({users}) => {
       return rows;
   }, [users])
 
-  return <div style={{height: 475, width : "45%", textAlign : "left", marginTop: 40}}>
+  return <div style={{height: 475, width : "45%", textAlign : "left"}}>
     <Flex>
       <h3 style={{margin : "auto", marginBottom : 10}}>User Balances</h3>
     </Flex>

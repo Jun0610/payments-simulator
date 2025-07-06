@@ -62,7 +62,7 @@ function App() {
 
   return (
     <>
-      <div style={{width : "70%" , margin : "0 auto", marginTop : 100}}>
+      <div style={{width : "70%" , height: "100%", margin : "0 auto", marginTop : 50, flex : 1}}>
         <Button style={{marginBottom : 20}} onClick={handleClick}>
           {simulatorState === STOP && "Start transaction simulator"}
           {simulatorState === START && "Stop transaction simulator"}
@@ -70,18 +70,18 @@ function App() {
         <div>
           Currently processing {renderTransactionCount()} transactions per second
         </div>
-        <Flex justify='space-between'>
+        <Flex justify='space-between' style={{marginTop: 20}}>
           <TransactionGrid mostRecentTransactions={mostRecentTransactions}/>
           <UsersGrid users={users}/>
         </Flex>
       </div>
-      <div style={{height : 50, width: "100%", bottom : 0, position : "absolute"}}>
+      <div style={{minHeight : 50}}>
         <span>
-        Made By: Jun Shern Lim | 
-        <a style={{paddingLeft : 5}} href="https://github.com/Jun0610/payments-simulator">
-          See the code here
-        </a>
-      </span>
+          Made By: Jun Shern Lim | 
+          <a style={{paddingLeft : 5}} href="https://github.com/Jun0610/payments-simulator">
+            See the code here
+          </a>
+        </span>
       </div>
 
     </>
