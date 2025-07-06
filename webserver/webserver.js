@@ -50,6 +50,7 @@ wss.on('connection', (ws) => {
   }, 5000)
 
   ws.on('message', (msg) => {
+    msg = msg.toString();
     if (msg === 'start') {
       statsInterval = setInterval(() => {
         if (stats) {
