@@ -1,0 +1,14 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Jun Shern Lim",
+  "type": "commonjs",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-ws": "^5.0.2",
+    "kafkajs": "^2.2.4"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "transaction-generator",
+  "version": "1.0.0",
+  "description": "Generates transactions and publishes them to kafka",
+  "author": "Jun Shern Lim",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}
