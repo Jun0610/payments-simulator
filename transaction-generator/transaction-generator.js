@@ -16,7 +16,6 @@ const generateTransactions = async () => {
   let transactionsPerSecond = 0;
 
   setInterval(() => {
-    console.log(transactionsPerSecond)
     transactionsPerSecond = 0;
   }, 1000)
 

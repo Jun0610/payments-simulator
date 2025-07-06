@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {Button, Flex} from 'antd'
 import './App.css'
-const webSocketUrl = 'ws://junshernlim.dev/payments-simulator/stats'
+const webSocketUrl = 'wss://junshernlim.dev/payments-simulator/stats'
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { useEffect } from 'react';
 import TransactionGrid from './TransactionsGrid';
