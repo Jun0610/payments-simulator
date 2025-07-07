@@ -7,7 +7,9 @@ import org.pojo.TransactionStats;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProcessTransactionTask implements Runnable {
+import java.util.concurrent.Callable;
+
+public class ProcessTransactionTask implements Callable<Void> {
 
     private final Transaction transaction;
     private static final Logger log = LoggerFactory.getLogger(ProcessTransactionTask.class.getName());
@@ -16,7 +18,7 @@ public class ProcessTransactionTask implements Runnable {
     }
 
     @Override
-    public void run() {
+    public Void call() {
 
         try {
             Jdbi jdbi = DBConnection.getJdbi();
@@ -49,6 +51,8 @@ public class ProcessTransactionTask implements Runnable {
         } catch (Exception e) {
             log.error(e.getMessage());
         }
+
+        return null;
 
     }
 }

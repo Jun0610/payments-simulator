@@ -25,7 +25,7 @@ const generateTransactions = async () => {
 
 
   while (true) {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 200; i++) {
       let senderId = Math.ceil(Math.random() * 10);
       let receiverId = Math.ceil(Math.random() * 10)
       if (senderId === receiverId) {
@@ -40,7 +40,7 @@ const generateTransactions = async () => {
       })
       transactionsPerSecond++;
     }
-    await sleep(500);
+    await sleep(1000);
 
   }
   

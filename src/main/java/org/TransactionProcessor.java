@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
@@ -41,14 +42,15 @@ public class TransactionProcessor {
             consumer.subscribe(List.of("transactions"));
             while(true) {
                 ConsumerRecords<String, Transaction> records = consumer.poll(Duration.ofMillis(100));
+                List<ProcessTransactionTask> tasks = new ArrayList<>();
                 for (ConsumerRecord<String, Transaction> record : records) {
-                    executorService.submit(new ProcessTransactionTask(record.value()));
+                    tasks.add(new ProcessTransactionTask(record.value()));
                 }
+                executorService.invokeAll(tasks);
             }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-
-
-
 
 
     }
